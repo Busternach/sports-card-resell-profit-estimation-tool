@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import javax.lang.model.util.ElementScanner6;
+class Main {
+  public static void main(String[] args) {
+      Scanner keyboard = new Scanner(System.in);
+      double SC;  // number of special cards
+      double OC;   // number of other cards
+      double AVS; // avg value of special cards
+      double AVOC; // avg value of other cards
+      double COP; // cost of pack/ card
+      double SP; //sell price
+      double EP;  //estimated profit
+      double odds; // odds of geting a special card
+
+      System.out.print("How many cards total? ");
+      OC = keyboard.nextDouble();
+     
+      System.out.print("How many cards are special? ");
+      SC = keyboard.nextDouble();
+     
+      System.out.print("what is the avg projected value of special cards ");
+      AVS = keyboard.nextDouble();
+     
+      System.out.print("what is the avg projected value of other cards ");
+      AVOC = keyboard.nextDouble();
+      
+      System.out.print("cost of card box/pack?");
+      COP = keyboard.nextDouble();
+    
+     odds = (OC / SC);
+      SP = (odds * AVS) + (1 - odds) * (AVOC);
+      EP = (COP - SP);
+     
+     if (odds < 1)
+      System.out.println("INPUT ERROR");
+    
+    else
+      {
+      System.out.println(new String(new char[56]).replace("\0", "_"));
+      System.out.println(String.format(" |%-10s|%-10s|%-10s|%-10s|%-10s|%-10s|%-10s|%-10s|"," Special Cards "," total cards","odds of Special Card","Avg value of special cards","Avg Value of other cards","Cost of pack","Estimated sell price","Estimated profit"));
+      System.out.println(new String(new char[55]).replace("\0","_"));
+      System.out.print(String.format(" |%-10s|%-10s|%-10s|%-10s|%-10s|%-10s|%-10s",SC,OC,("1/" + odds),AVS,AVOC,COP,SP,EP));
+      System.out.println(new String(new char[54]).replace("\0", " ̅"));
+    
+       }
+   }
+}
